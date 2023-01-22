@@ -18,11 +18,11 @@ let rederTable = function (items) {
   // 3. Create table dynamically .
   let container = document.querySelector("#table");
   let table = document.createElement("table");
-  items.ForEach((obj) => {
+  items.ForEach((item) => {
     let row = document.createElement("tr");
-    for (let objKey in obj) {
+    for (let objKey in item) {
       let cell = document.createElement("td");
-      let textNode = document.createTextNode(obj[objKey]);
+      let textNode = document.createTextNode(item[objKey]);
       cell.appendChild(textNode);
       row.appendChild(cell);
     }
