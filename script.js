@@ -1,3 +1,4 @@
+// 1. Create An Array Of Students.
 let studentsOne = [
   { Name: "Hammad", Age: 17, Class: "10th" },
   { Name: "Abdul Rafay", Age: 11, Class: "3rd" },
@@ -36,6 +37,17 @@ let rederTable = function (items) {
       cellEl.appendChild(textNode);
       rowEl.appendChild(cellEl);
     }
+    let deleteCell = document.createElement("td");
+    let deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "Delete";
+    deleteCell.appendChild(deleteButton);
+    rowEl.appendChild(deleteCell);
+
+    // Add event listener to the delete button
+    deleteButton.addEventListener("click", function () {
+      // Remove the parent row of the button (which is the row that the button is inside of)
+      this.parentNode.parentNode.remove();
+    });
     table.appendChild(rowEl);
   });
 
@@ -43,4 +55,4 @@ let rederTable = function (items) {
 };
 
 // 4. calling function.
-rederTable(studentsOne);
+rederTable(teachersOne);
