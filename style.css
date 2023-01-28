@@ -1,7 +1,5 @@
 body {
-  text-align: center;
-  color: rgb(93, 7, 241);
-  background-color: black;
+  text-align: center !important;
 }
 
 div {
@@ -14,12 +12,16 @@ div {
 }
 th,
 td {
-  border: 5px solid rgb(15, 247, 38);
-  padding: 50px;
+  border: 1px solid black !important;
+  padding: 10px;
 }
-td:hover {
+button {
   color: white;
-  background-color: rgb(93, 7, 241);
-  border: 5px solid rgb(93, 7, 241);
-  box-shadow: white 0px 5px 15px;
+  background-color: red;
+  padding: 5px 10px;
+  border: none;
+}
+thead {
+  background-color: green;
+  color: aliceblue;
 }
