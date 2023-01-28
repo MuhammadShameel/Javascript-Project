@@ -42,13 +42,10 @@ let rederTable = function (items) {
     }
     let deleteCell = document.createElement("td");
     let deleteButton = document.createElement("button");
-    deleteButton.innerHTML = "Delete";
+    deleteButton.innerText = "Delete";
     deleteCell.appendChild(deleteButton);
     rowEl.appendChild(deleteCell);
-
-    // Add event listener to the delete button
     deleteButton.addEventListener("click", function () {
-      // Remove the parent row of the button (which is the row that the button is inside of)
       this.parentNode.parentNode.remove();
     });
     tbody.appendChild(rowEl);
