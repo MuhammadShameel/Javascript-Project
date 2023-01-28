@@ -1,16 +1,16 @@
 // 1. Create An Array Of Students.
 let studentsOne = [
-  { Name: "Hammad", Age: 17, Class: "10th" },
-  { Name: "Abdul Rafay", Age: 11, Class: "3rd" },
-  { Name: "Huzaifa", Age: 8, Class: "2nd" },
-  { Name: "Laraib", Age: 16, Class: "9th" },
+  { name: "Hammad", age: 17, class: "10th" },
+  { name: "Abdul Rafay", age: 11, class: "3rd" },
+  { name: "Huzaifa", age: 8, class: "2nd" },
+  { name: "Laraib", age: 16, class: "9th" },
 ];
 
 let teachersOne = [
-  { Name: "Sir Bilal", Age: 27, Subjects: "English" },
-  { Name: "Sir Areeb", Age: 21, Subjects: "Chemistry" },
-  { Name: "Sir Nabeel", Age: 28, Subjects: "Physics" },
-  { Name: "Sir Habeeb", Age: 26, Subjects: "Urdu" },
+  { name: "Sir Bilal", age: 27, subjects: "English" },
+  { name: "Sir Areeb", age: 21, subjects: "Chemistry" },
+  { name: "Sir Nabeel", age: 28, subjects: "Physics" },
+  { name: "Sir Habeeb", age: 26, subjects: "Urdu" },
 ];
 
 // 2.Create a function named renderTable.
@@ -18,6 +18,8 @@ let rederTable = function (items) {
   // 3. Create table dynamically .
   let container = document.querySelector("#table");
   let table = document.createElement("table");
+  let thead = document.createElement("thead");
+  let tbody = document.createElement("tbody");
 
   items.forEach((item, index) => {
     if (index === 0) {
@@ -29,6 +31,7 @@ let rederTable = function (items) {
         row.appendChild(cell);
         table.appendChild(row);
       }
+      thead.appendChild(row);
     }
     let rowEl = document.createElement("tr");
     for (let itemKey in item) {
@@ -48,9 +51,10 @@ let rederTable = function (items) {
       // Remove the parent row of the button (which is the row that the button is inside of)
       this.parentNode.parentNode.remove();
     });
-    table.appendChild(rowEl);
+    tbody.appendChild(rowEl);
   });
-
+  table.appendChild(thead);
+  table.appendChild(tbody);
   container.appendChild(table);
 };
 
