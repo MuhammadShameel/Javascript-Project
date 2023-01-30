@@ -14,7 +14,7 @@ let teachersOne = [
 ];
 
 // 2.Create a function named renderTable.
-let rederTable = function (items) {
+let rederTable = function (items, itemsTwo) {
   // 3. Create table dynamically .
   let container = document.querySelector("#table");
   let table = document.createElement("table");
@@ -26,8 +26,7 @@ let rederTable = function (items) {
       let row = document.createElement("tr");
       for (let itemKey in item) {
         let cell = document.createElement("td");
-        let textNode = document.createTextNode(itemKey);
-        cell.appendChild(textNode);
+        cell.innerText = itemKey;
         row.appendChild(cell);
         table.appendChild(row);
       }
@@ -45,15 +44,54 @@ let rederTable = function (items) {
     deleteButton.innerText = "Delete";
     deleteCell.appendChild(deleteButton);
     rowEl.appendChild(deleteCell);
+
     deleteButton.addEventListener("click", function () {
       this.parentNode.parentNode.remove();
     });
     tbody.appendChild(rowEl);
   });
+
   table.appendChild(thead);
   table.appendChild(tbody);
   container.appendChild(table);
+  let containerTwo = document.querySelector("#tableTwo");
+  let anotherTable = document.createElement("table");
+  let anotherThead = document.createElement("thead");
+  let anotherTbody = document.createElement("tbody");
+
+  itemsTwo.forEach((item, index) => {
+    if (index === 0) {
+      let row = document.createElement("tr");
+      for (let itemKey in item) {
+        let cell = document.createElement("td");
+        cell.innerText = itemKey;
+        row.appendChild(cell);
+        table.appendChild(row);
+      }
+      anotherThead.appendChild(row);
+    }
+    let rowEl = document.createElement("tr");
+    for (let itemKey in item) {
+      let cellEl = document.createElement("td");
+      let textNode = document.createTextNode(item[itemKey]);
+      cellEl.appendChild(textNode);
+      rowEl.appendChild(cellEl);
+    }
+    let deleteCell = document.createElement("td");
+    let deleteButton = document.createElement("button");
+    deleteButton.innerText = "Delete";
+    deleteCell.appendChild(deleteButton);
+    rowEl.appendChild(deleteCell);
+
+    deleteButton.addEventListener("click", function () {
+      this.parentNode.parentNode.remove();
+    });
+    anotherTbody.appendChild(rowEl);
+  });
+  anotherTable.appendChild(anotherThead);
+  anotherTable.appendChild(anotherTbody);
+  containerTwo.appendChild(anotherTable);
 };
 
 // 4. calling function.
-rederTable(teachersOne);
+rederTable(teachersOne, studentsOne);
