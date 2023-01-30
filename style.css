@@ -7,7 +7,9 @@ div {
 }
 
 #table {
-  display: block;
+  margin-top: 20px;
+}
+#tableTwo {
   margin-top: 20px;
 }
 th,
