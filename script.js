@@ -27,6 +27,10 @@ let renderTable = function (items, elementId) {
         row.appendChild(cell);
         table.appendChild(row);
       }
+      let deleteHeader = document.createElement("td");
+      deleteHeader.innerText = "Action";
+      row.appendChild(deleteHeader);
+      thead.appendChild(row);
       thead.appendChild(row);
     }
     let rowEl = document.createElement("tr");
