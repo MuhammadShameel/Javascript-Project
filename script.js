@@ -1,35 +1,63 @@
-// 1. Create An Array Of Students.
 let studentsOne = [
-  { name: "Hammad", age: 17 },
-  { name: "Abdul Rafay", age: 11 },
-  { name: "Huzaifa", age: 8 },
-  { name: "Laraib", age: 16 },
+  { name: "Hammad", age: 17, class: "10th" },
+  { name: "Abdul Rafay", age: 11, class: "3rd" },
+  { name: "Huzaifa", age: 8, class: "2nd" },
+  { name: "Laraib", age: 16, class: "9th" },
 ];
 
 let teachersOne = [
-  { name: "Sir Bilal", age: 27, salary: 200 },
-  { name: "Sir Areeb", age: 21 },
-  { name: "Sir Nabeel", age: 28 },
-  { name: "Sir Habeeb", age: 26 },
+  { name: "Sir Bilal", age: 27, subjects: "English" },
+  { name: "Sir Areeb", age: 21, subjects: "Chemistry" },
+  { name: "Sir Nabeel", age: 28, subjects: "Physics" },
+  { name: "Sir Habeeb", age: 26, subjects: "Urdu" },
 ];
 
-// 2.Create a function named renderTable.
-let rederTable = function (items) {
-  // 3. Create table dynamically .
-  let container = document.querySelector("#table");
+let renderTable = function (items, elementId) {
+  let container = document.querySelector(elementId);
   let table = document.createElement("table");
-  items.forEach((item) => {
-    let row = document.createElement("tr");
-    for (let itemKey in item) {
-      let cell = document.createElement("td");
-      let textNode = document.createTextNode(item[itemKey]);
-      cell.appendChild(textNode);
-      row.appendChild(cell);
+  let thead = document.createElement("thead");
+  let tbody = document.createElement("tbody");
+
+  items.forEach((item, index) => {
+    if (index === 0) {
+      let row = document.createElement("tr");
+      for (let itemKey in item) {
+        let cell = document.createElement("td");
+        cell.innerText = itemKey;
+        row.appendChild(cell);
+        table.appendChild(row);
+      }
+      let deleteHeader = document.createElement("td");
+      deleteHeader.innerText = "Action";
+      row.appendChild(deleteHeader);
+      thead.appendChild(row);
+      thead.appendChild(row);
     }
-    table.appendChild(row);
+    let rowEl = document.createElement("tr");
+    for (let itemKey in item) {
+      let cellEl = document.createElement("td");
+      let textNode = document.createTextNode(item[itemKey]);
+      cellEl.appendChild(textNode);
+      rowEl.appendChild(cellEl);
+    }
+    let deleteCell = document.createElement("td");
+    let deleteButton = document.createElement("button");
+    deleteButton.innerText = "Delete";
+    deleteCell.appendChild(deleteButton);
+    rowEl.appendChild(deleteCell);
+
+    deleteButton.addEventListener("click", function () {
+      let parentContainer = this.parentNode.parentNode;
+      while (parentContainer.firstChild) {
+        parentContainer.removeChild(parentContainer.firstChild);
+      }
+    });
+    tbody.appendChild(rowEl);
   });
+  table.appendChild(thead);
+  table.appendChild(tbody);
   container.appendChild(table);
 };
 
-// 4. calling function.
-rederTable(teachersOne);
+renderTable(teachersOne, "#table");
+renderTable(studentsOne, "#tableTwo");
