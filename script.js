@@ -13,7 +13,9 @@ let teachersOne = [
 ];
 
 let renderTable = function (items, elementId) {
+  // document.getElementById(elementId);
   let container = document.querySelector(elementId);
+  console.log(container);
   let table = document.createElement("table");
   let thead = document.createElement("thead");
   let tbody = document.createElement("tbody");
@@ -42,15 +44,15 @@ let renderTable = function (items, elementId) {
     }
     let deleteCell = document.createElement("td");
     let deleteButton = document.createElement("button");
+    deleteButton.className = "btn btn-outline-danger";
     deleteButton.innerText = "Delete";
     deleteCell.appendChild(deleteButton);
     rowEl.appendChild(deleteCell);
 
     deleteButton.addEventListener("click", function () {
-      let parentContainer = this.parentNode.parentNode;
-      while (parentContainer.firstChild) {
-        parentContainer.removeChild(parentContainer.firstChild);
-      }
+      items.splice(index, 1);
+      container.removeChild(table);
+      renderTable(items, elementId);
     });
     tbody.appendChild(rowEl);
   });
