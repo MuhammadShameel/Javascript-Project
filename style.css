@@ -1,29 +1,23 @@
 body {
   text-align: center !important;
+  background-color: rgba(1, 255, 255, 0.925) !important;
+  font-weight: 500 !important;
 }
 
 div {
-  display: inline-block;
+  display: inline-flex;
 }
 
-#table {
-  margin-top: 20px;
+table {
+  margin-top: 10%;
 }
-#tableTwo {
-  margin-top: 20px;
-}
-th,
+
 td {
-  border: 1px solid black !important;
+  border: 1px solid #1e2125 !important;
   padding: 10px;
 }
-button {
-  color: white;
-  background-color: red;
-  padding: 5px 10px;
-  border: none;
-}
-thead {
-  background-color: green;
-  color: aliceblue;
+h1 {
+  font-family: "Tilt Neon", cursive;
+  margin-top: 50px !important;
+  font-size: 50px !important;
 }
