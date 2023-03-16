@@ -1,16 +1,16 @@
 // 1. Create An Array Of Students.
 let studentsOne = [
-  { name: "Hammad", age: 17 },
-  { name: "Abdul Rafay", age: 11 },
-  { name: "Huzaifa", age: 8 },
-  { name: "Laraib", age: 16 },
+  { Name: "Hammad", Age: 17, Class: "10th" },
+  { Name: "Abdul Rafay", Age: 11, Class: "3rd" },
+  { Name: "Huzaifa", Age: 8, Class: "2nd" },
+  { Name: "Laraib", Age: 16, Class: "9th" },
 ];
 
 let teachersOne = [
-  { name: "Sir Bilal", age: 27, salary: 200 },
-  { name: "Sir Areeb", age: 21 },
-  { name: "Sir Nabeel", age: 28 },
-  { name: "Sir Habeeb", age: 26 },
+  { Name: "Sir Bilal", Age: 27, Subjects: "English" },
+  { Name: "Sir Areeb", Age: 21, Subjects: "Chemistry" },
+  { Name: "Sir Nabeel", Age: 28, Subjects: "Physics" },
+  { Name: "Sir Habeeb", Age: 26, Subjects: "Urdu" },
 ];
 
 // 2.Create a function named renderTable.
@@ -18,17 +18,28 @@ let rederTable = function (items) {
   // 3. Create table dynamically .
   let container = document.querySelector("#table");
   let table = document.createElement("table");
-  for (let key in items) {
-    let row = document.createElement("tr");
-    let obj = items[key];
-    for (let objKey in obj) {
-      let cell = document.createElement("td");
-      let textNode = document.createTextNode(obj[objKey]);
-      cell.appendChild(textNode);
-      row.appendChild(cell);
+
+  items.forEach((item, index) => {
+    if (index === 0) {
+      let row = document.createElement("tr");
+      for (let itemKey in item) {
+        let cell = document.createElement("td");
+        let textNode = document.createTextNode(itemKey);
+        cell.appendChild(textNode);
+        row.appendChild(cell);
+        table.appendChild(row);
+      }
     }
-    table.appendChild(row);
-  }
+    let rowEl = document.createElement("tr");
+    for (let itemKey in item) {
+      let cellEl = document.createElement("td");
+      let textNode = document.createTextNode(item[itemKey]);
+      cellEl.appendChild(textNode);
+      rowEl.appendChild(cellEl);
+    }
+    table.appendChild(rowEl);
+  });
+
   container.appendChild(table);
 };
 

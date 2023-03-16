@@ -1,5 +1,5 @@
 body {
-  text-align: center;
+  text-align: center !important;
 }
 
 div {
@@ -12,6 +12,6 @@ div {
 }
 th,
 td {
-  border: 5px solid rgb(241, 7, 7);
+  border: 1px solid black !important;
   padding: 10px;
 }
