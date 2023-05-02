@@ -1,25 +1,25 @@
-interface student {
+interface Student {
   name: string;
   age: number;
   class: string;
   [key: string]: any;
 }
 
-interface teacher {
+interface Teacher {
   name: string;
   age: number;
   subjects: string;
   [key: string]: any;
 }
 
-const Students: student[] = [
+const students: Student[] = [
   { name: "Hammad", age: 17, class: "10th" },
   { name: "Abdul Rafay", age: 11, class: "3rd" },
   { name: "Huzaifa", age: 8, class: "2nd" },
   { name: "Laraib", age: 16, class: "9th" },
 ];
 
-const Teachers: teacher[] = [
+const teachers: Teacher[] = [
   { name: "Sir Bilal", age: 27, subjects: "English" },
   { name: "Sir Areeb", age: 21, subjects: "Chemistry" },
   { name: "Sir Nabeel", age: 28, subjects: "Physics" },
@@ -112,5 +112,5 @@ function renderTable(items: any[], elementId: string) {
   container.appendChild(table);
 }
 
-renderTable(Students, "students-table");
-renderTable(Teachers, "teachers-table");
+renderTable(students, "students-table");
+renderTable(teachers, "teachers-table");
